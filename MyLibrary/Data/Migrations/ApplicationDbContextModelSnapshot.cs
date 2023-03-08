@@ -244,7 +244,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Author");
+                    b.ToTable("Author", (string)null);
                 });
 
             modelBuilder.Entity("MyLibrary.Models.Book", b =>
@@ -288,7 +288,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("Book");
+                    b.ToTable("Book", (string)null);
                 });
 
             modelBuilder.Entity("MyLibrary.Models.Genre", b =>
@@ -306,7 +306,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre");
+                    b.ToTable("Genre", (string)null);
                 });
 
             modelBuilder.Entity("MyLibrary.Models.OrderDetail", b =>
@@ -335,7 +335,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderDetail");
+                    b.ToTable("OrderDetail", (string)null);
                 });
 
             modelBuilder.Entity("MyLibrary.Models.OrderModels.Order", b =>
@@ -363,7 +363,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasIndex("OrderStatusId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Order", (string)null);
                 });
 
             modelBuilder.Entity("MyLibrary.Models.OrderModels.OrderStatus", b =>
@@ -384,7 +384,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderStatus");
+                    b.ToTable("OrderStatus", (string)null);
                 });
 
             modelBuilder.Entity("MyLibrary.Models.ShoppingCartModels.CartDetail", b =>
@@ -410,7 +410,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasIndex("ShoppingCartId");
 
-                    b.ToTable("CartDetail");
+                    b.ToTable("CartDetail", (string)null);
                 });
 
             modelBuilder.Entity("MyLibrary.Models.ShoppingCartModels.ShoppingCart", b =>
@@ -430,7 +430,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ShoppingCart");
+                    b.ToTable("ShoppingCart", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

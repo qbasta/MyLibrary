@@ -29,5 +29,10 @@ namespace MyLibrary.Models
         public List<OrderDetail> OrderDetail { get; set; }
         public List<CartDetail> CartDetail { get; set; }
 
+        [NotMapped]
+        public string GenreName { get; set; }
+        [NotMapped]
+        public string AuthorName { get; set; }
+
     }
 }

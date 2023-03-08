@@ -7,23 +7,39 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyLibrary.Data;
 using MyLibrary.Models;
+using MyLibrary.ViewModels;
 
 namespace MyLibrary.Controllers
 {
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IBookRepository _bookRepository;
 
-        public BooksController(ApplicationDbContext context)
+        public BooksController(ApplicationDbContext context, IBookRepository bookRepository)
         {
             _context = context;
+            _bookRepository = bookRepository;
         }
 
         // GET: Books
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sTerm = "", int genreId = 0)
         {
+
+            IEnumerable<Book> books =  await _bookRepository.GetBooks(sTerm, genreId);
+            IEnumerable<Genre> genres = await _bookRepository.Genres();
+            IEnumerable<Author> authors = await _bookRepository.Authors();
             var applicationDbContext = _context.Books.Include(b => b.Author).Include(b => b.Genre);
-            return View(await applicationDbContext.ToListAsync());
+            BookViewModel bookModel = new BookViewModel
+            {
+                Books = books,
+                Genres = genres,
+                Authors = authors,
+                STerm = sTerm,
+                GenreId = genreId
+
+            };
+            return View(bookModel);
         }
 
         // GET: Books/Details/5
