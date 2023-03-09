@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using MyLibrary;
 using MyLibrary.Data;
 using MyLibrary.Models;
 using MyLibrary.RoleSeed;
@@ -25,6 +26,8 @@ builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IBookRepository, BookRepository>();
 
 var app = builder.Build();
 

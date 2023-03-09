@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyLibrary.Data;
 
@@ -11,9 +12,11 @@ using MyLibrary.Data;
 namespace MyLibrary.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230307163714_BookModelChange")]
+    partial class BookModelChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -244,7 +247,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Author", (string)null);
+                    b.ToTable("Author");
                 });
 
             modelBuilder.Entity("MyLibrary.Models.Book", b =>
@@ -288,7 +291,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("Book", (string)null);
+                    b.ToTable("Book");
                 });
 
             modelBuilder.Entity("MyLibrary.Models.Genre", b =>
@@ -306,7 +309,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre", (string)null);
+                    b.ToTable("Genre");
                 });
 
             modelBuilder.Entity("MyLibrary.Models.OrderDetail", b =>
@@ -335,7 +338,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderDetail", (string)null);
+                    b.ToTable("OrderDetail");
                 });
 
             modelBuilder.Entity("MyLibrary.Models.OrderModels.Order", b =>
@@ -363,7 +366,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasIndex("OrderStatusId");
 
-                    b.ToTable("Order", (string)null);
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("MyLibrary.Models.OrderModels.OrderStatus", b =>
@@ -384,7 +387,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderStatus", (string)null);
+                    b.ToTable("OrderStatus");
                 });
 
             modelBuilder.Entity("MyLibrary.Models.ShoppingCartModels.CartDetail", b =>
@@ -410,7 +413,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasIndex("ShoppingCartId");
 
-                    b.ToTable("CartDetail", (string)null);
+                    b.ToTable("CartDetail");
                 });
 
             modelBuilder.Entity("MyLibrary.Models.ShoppingCartModels.ShoppingCart", b =>
@@ -430,7 +433,7 @@ namespace MyLibrary.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ShoppingCart", (string)null);
+                    b.ToTable("ShoppingCart");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
