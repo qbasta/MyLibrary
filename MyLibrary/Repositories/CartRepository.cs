@@ -8,11 +8,11 @@ namespace MyLibrary.Repositories
     public class CartRepository : ICartRepository
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
         
         
-        public CartRepository(ApplicationDbContext context, UserManager<IdentityUser> userManager, 
+        public CartRepository(ApplicationDbContext context, UserManager<ApplicationUser> userManager, 
             IHttpContextAccessor httpContextAccessor)
         {
             _context= context;
