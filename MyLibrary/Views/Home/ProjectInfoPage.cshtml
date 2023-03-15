@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Project info page";
+}
+
+<wbr />
+<div class="text-center">
+    <h3>Welcome to my page!</h3>
+</div>
+<wbr /> 
+
+<div class="alert alert-dismissible alert-warning text-center">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <h4 class="alert-heading">Warning!</h4>
+        <p class="mb-0">This page is still in development, although it has some basic functionalities listed below, I am planning to further develop
+           it. Tasks that are done and ones I want to do are listed below.<p>
+
+            <a class="alert-link">THANKS FOR VISITING!</a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th align="center" scope="col">Done</th>
+            <th align="center" scope="col">In progress</th>
+
+        </tr>
+    </thead>     
+    <tbody>
+        <tr>
+           <td>Roles and roles management via /AdminPanel</td>
+           <td>Add [Authorize] to pages making them avalible only for users with roles</td>
+        </tr>
+        <tr>
+           <td>Profile management (Profile picture)</td>
+           <td>More profile management options</td>
+        </tr>
+        <tr>
+           <td>Custom identity, saving input from register to profile (Name, Surname)</td>
+           <td>More fields to save/add</td>
+        </tr>
+        <tr>
+           <td>Book page with images and info about each book</td>
+           <td>Visual changes to book page interface</td>
+        </tr>
+        <tr>
+           <td>Posibility to filter book by -Genre- and -Title-</td>
+           <td>More filtering fields</td>
+        </tr>
+        <tr>
+           <td>Custom page for book after clicking details</td>
+           <td>Add downloadable content for each book (book cover / table of contents)</td>
+        </tr>
+        <tr>
+           <td>Page in user profile showing orders history of each user</td>
+           <td>Add pdf generator to make a downloadable order confirmation</td>
+        </tr>
+        <tr>
+           <td>Shopping cart with posibility of adding and deleting books from it</td>
+           <td>Finish cart visually and functionally as of now its bugged of unknown reasons</td>
+        </tr>
+        <tr>
+           <td>Script automatically incrementing number by the shopping cart, showing current cart content </td>
+           <td></td>
+        </tr>
+        <tr>
+           <td></td>
+           <td>Add globalization and localization</td>
+        </tr>
+        
+
+    </tbody>
+
+</table>
+<wbr />
+<h4 class="text-center text-capitalize">Any questions?</h4>
+<br />
+<div class="container">
+    <div class="row">
+
+<div class="card bg-light mb-3" style="max-width: 35rem;">
+        <div class="card-header">How to acess admin panel?</div>
+        <div class="card-body">
+            <p class="card-text">Currently Admin Panel is avalible through /AdminPanel.</p>
+            <p class="card-text">This page contains 2 subpages, one of them is Role Manager
+                which simply allows to add new roles. Another one is User Roles which allows to modify roles for each user in easy way.
+            </p>
+        </div>
+    </div>
+
+    <br />
+    @*
+<div class="card bg-light mb-3" style="max-width: 35rem;">
+    <div class="card-header">Accounts and logging in</div>
+    <div class="card-body">
+        <p class="card-text">Currently you can only log with one account</p>
+        <p class="card-text">This is because SendGrid policy, i was working on e-mail confirmation sender which was working but due
+            to SendGrid policy, after uploading my project on github, it stopped working
+
+        </p>
+    </div>
+</div>
+        *@
+</div>
+</div>

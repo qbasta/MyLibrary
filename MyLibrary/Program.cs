@@ -30,7 +30,7 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddTransient<IBookRepository, BookRepository>();
 builder.Services.AddTransient<ICartRepository, CartRepository>();
-
+builder.Services.AddTransient<IUserOrderRepository, UserOrderRepository>();
 
 var app = builder.Build();
 
