@@ -9,18 +9,18 @@ using MyLibrary.Data;
 
 #nullable disable
 
-namespace MyLibrary.Data.Migrations
+namespace MyLibrary.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230306184044_ModelChange")]
-    partial class ModelChange
+    [Migration("20230315012006_DatabaseRebuild")]
+    partial class DatabaseRebuild
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -258,6 +258,9 @@ namespace MyLibrary.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
@@ -404,6 +407,9 @@ namespace MyLibrary.Data.Migrations
                     b.Property<int>("ShoppingCartId")
                         .HasColumnType("int");
 
+                    b.Property<double>("UnitPrice")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
@@ -542,7 +548,7 @@ namespace MyLibrary.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("MyLibrary.Models.ShoppingCartModels.ShoppingCart", "ShoppingCart")
-                        .WithMany()
+                        .WithMany("CartDetails")
                         .HasForeignKey("ShoppingCartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -572,6 +578,11 @@ namespace MyLibrary.Data.Migrations
             modelBuilder.Entity("MyLibrary.Models.OrderModels.Order", b =>
                 {
                     b.Navigation("OrderDetail");
+                });
+
+            modelBuilder.Entity("MyLibrary.Models.ShoppingCartModels.ShoppingCart", b =>
+                {
+                    b.Navigation("CartDetails");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,7 +8,7 @@ using MyLibrary.Data;
 
 #nullable disable
 
-namespace MyLibrary.Data.Migrations
+namespace MyLibrary.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -404,6 +404,9 @@ namespace MyLibrary.Data.Migrations
                     b.Property<int>("ShoppingCartId")
                         .HasColumnType("int");
 
+                    b.Property<double>("UnitPrice")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
@@ -542,7 +545,7 @@ namespace MyLibrary.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("MyLibrary.Models.ShoppingCartModels.ShoppingCart", "ShoppingCart")
-                        .WithMany()
+                        .WithMany("CartDetails")
                         .HasForeignKey("ShoppingCartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -572,6 +575,11 @@ namespace MyLibrary.Data.Migrations
             modelBuilder.Entity("MyLibrary.Models.OrderModels.Order", b =>
                 {
                     b.Navigation("OrderDetail");
+                });
+
+            modelBuilder.Entity("MyLibrary.Models.ShoppingCartModels.ShoppingCart", b =>
+                {
+                    b.Navigation("CartDetails");
                 });
 #pragma warning restore 612, 618
         }

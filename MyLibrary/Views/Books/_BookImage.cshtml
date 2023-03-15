@@ -1,0 +1,16 @@
+﻿@model MyLibrary.Models.Book
+
+@{
+    var imgText = "";
+    if (Model.Image.EndsWith("cover0.png"))
+    {
+        imgText = "Brak zdjęcia dla " + Model.Name;
+    }
+    else
+    {
+        imgText = "Okładka książki " + Model.Name;
+    }
+}
+
+
+<img src="@Model.Image" class="image-fluid" alt="@imgText" title="@imgText" />
