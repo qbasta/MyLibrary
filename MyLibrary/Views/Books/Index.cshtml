@@ -60,7 +60,8 @@
                     <b>Price: </b>@item.Price
                 </p>
                 <button type="button" onclick="add(@item.Id)" class="btn btn-primary">Add to cart</button>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </div>
         </div>

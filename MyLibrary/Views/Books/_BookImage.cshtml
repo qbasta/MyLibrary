@@ -2,7 +2,7 @@
 
 @{
     var imgText = "";
-    if (Model.Image.EndsWith("cover0.png"))
+    if (Model.Image.EndsWith("NoImage.png"))
     {
         imgText = "No photo for " + Model.Name;
     }
@@ -13,4 +13,4 @@
 }
 
 
-<img src="@Model.Image" class="image-fluid" alt="@imgText" title="@imgText" />
+<img src="~/images/@Model.Image" class="image-fluid" alt="@imgText" title="@imgText" />
