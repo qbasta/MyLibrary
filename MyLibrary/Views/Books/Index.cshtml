@@ -55,15 +55,18 @@
             <div class="card-body">
                 <h5 class="card-title">@item.Name</h5>
                 <p class="card-text">
-                    <b>Genre: </b>@item.GenreName <br />
-                    <b>Author: </b>@item.AuthorName <br />
+                    <b>Genre: </b>@item.GenreName<br />
+                    <b>Author: </b>@item.AuthorName<br />
                     <b>Price: </b>@item.Price
                 </p>
                 <button type="button" onclick="add(@item.Id)" class="btn btn-primary">Add to cart</button>
                 
                 <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </div>
+                @if (User.Identity.IsAuthenticated && !User.IsInRole("User"))
+                {
+                    <a class="btn btn-warning" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                }
+                </div>
         </div>
     }
 </div>

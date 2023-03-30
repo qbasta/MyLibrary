@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyLibrary.Data;
 using MyLibrary.Models;
-using MyLibrary.ViewModels;
+using MyLibrary.Repositories;
 
 namespace MyLibrary.Controllers
 {
@@ -15,6 +15,7 @@ namespace MyLibrary.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IBookRepository _bookRepository;
+
 
         public BooksController(ApplicationDbContext context, IBookRepository bookRepository)
         {
@@ -25,8 +26,7 @@ namespace MyLibrary.Controllers
         // GET: Books
         public async Task<IActionResult> Index(string sTerm = "", int genreId = 0)
         {
-
-            IEnumerable<Book> books =  await _bookRepository.GetBooks(sTerm, genreId);
+            IEnumerable<Book> books = await _bookRepository.GetBooks(sTerm, genreId);
             IEnumerable<Genre> genres = await _bookRepository.Genres();
             IEnumerable<Author> authors = await _bookRepository.Authors();
             var applicationDbContext = _context.Books.Include(b => b.Author).Include(b => b.Genre);
@@ -39,7 +39,7 @@ namespace MyLibrary.Controllers
                 GenreId = genreId
 
             };
-            return View(bookModel);
+            return View(applicationDbContext);
         }
 
         // GET: Books/Details/5
@@ -65,8 +65,8 @@ namespace MyLibrary.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["AuthorId"] = new SelectList(_context.Set<Author>(), "Id", "AuthorName");
-            ViewData["GenreId"] = new SelectList(_context.Set<Genre>(), "Id", "GenreName");
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "AuthorName");
+            ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "GenreName");
             return View();
         }
 
@@ -83,8 +83,8 @@ namespace MyLibrary.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorId"] = new SelectList(_context.Set<Author>(), "Id", "AuthorName", book.AuthorId);
-            ViewData["GenreId"] = new SelectList(_context.Set<Genre>(), "Id", "GenreName", book.GenreId);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "AuthorName", book.AuthorId);
+            ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "GenreName", book.GenreId);
             return View(book);
         }
 
@@ -101,8 +101,8 @@ namespace MyLibrary.Controllers
             {
                 return NotFound();
             }
-            ViewData["AuthorId"] = new SelectList(_context.Set<Author>(), "Id", "AuthorName", book.AuthorId);
-            ViewData["GenreId"] = new SelectList(_context.Set<Genre>(), "Id", "GenreName", book.GenreId);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "AuthorName", book.AuthorId);
+            ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "GenreName", book.GenreId);
             return View(book);
         }
 
@@ -138,8 +138,8 @@ namespace MyLibrary.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorId"] = new SelectList(_context.Set<Author>(), "Id", "AuthorName", book.AuthorId);
-            ViewData["GenreId"] = new SelectList(_context.Set<Genre>(), "Id", "GenreName", book.GenreId);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "AuthorName", book.AuthorId);
+            ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "GenreName", book.GenreId);
             return View(book);
         }
 

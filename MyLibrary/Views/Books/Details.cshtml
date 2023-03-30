@@ -4,13 +4,16 @@
     ViewData["Title"] = "Details";
 }
 <wbr />
-<h1>Details</h1>
+<a href="/Books/" class="btn btn-primary my-2">Back</a>
+<h2>@Html.DisplayFor(model => model.Name) by @Html.DisplayFor(model => model.Author.AuthorName) </h2>
 <wbr />
 
-@Html.Partial("_BookImage")
+<partial>
+    @Html.Partial("_BookImage")
+</partial>
+
 
 <div>
-    <h4>Book</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -55,12 +58,15 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ISBN)
         </dd>
-        <dt class = "col-sm-2">
+        @if (User.Identity.IsAuthenticated && !User.IsInRole("User"))
+        {
+            <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
+            </dt>
+            <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Image)
-        </dd>
+            </dd>
+        }
     </dl>
     <hr/>
 </div>
