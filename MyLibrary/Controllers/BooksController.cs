@@ -29,7 +29,7 @@ namespace MyLibrary.Controllers
             IEnumerable<Book> books = await _bookRepository.GetBooks(sTerm, genreId);
             IEnumerable<Genre> genres = await _bookRepository.Genres();
             IEnumerable<Author> authors = await _bookRepository.Authors();
-            var applicationDbContext = _context.Books.Include(b => b.Author).Include(b => b.Genre);
+            var applicationDbContext = _context.Books.Include(b => b.Author).Include(b => b.Genre).ToList();
             BookViewModel bookModel = new BookViewModel
             {
                 Books = books,
