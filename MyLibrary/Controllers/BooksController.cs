@@ -39,7 +39,7 @@ namespace MyLibrary.Controllers
                 GenreId = genreId
 
             };
-            return View(applicationDbContext);
+            return View(bookModel);
         }
 
         // GET: Books/Details/5
